@@ -1,3 +1,6 @@
+@import url("https://magnizent-ui.netlify.app/style/components.css");
+@import url("https://magnizent-ui.netlify.app/Components/Button/button.css");
+
 .App {
   text-align: center;
 }
@@ -35,4 +38,48 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header-main {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.box-container {
+  border: 3px solid var(--border);
+  margin: 45px auto 20px;
+  padding: 20px;
+  max-width: 900px;
+ display: flex;
+ flex-direction: column;
+ gap: 20px
+}
+
+.form-container  {
+  justify-content: center;
+  align-items: center;
+}
+
+.address-container {
+  color: var(--secondary-color)
+}
+
+.btn {
+  flex-grow: 1;
+  padding-top: 10px;
+  padding-bottom: 10px
+}
+
+.add-btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 2rem;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.address-bar {
+  cursor: pointer;
 }
