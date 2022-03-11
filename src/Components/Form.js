@@ -2,25 +2,26 @@ import { useState } from "react"
 import FormCantroller from "./formCantroller"
 
 
-export default function Form() {
+export default function Form({data, setData}) {
     const [name, setName] = useState('')
     const [phoneNo, setPhoneNo] = useState('')
-    const [country, setCountry] = useState('')
-    const [disable, setDisbale] = useState(false)
 
     const [displayForm , setDisplayForm] = useState(false)
 
-    const editHandler = () => {
-        setDisbale(false)
-    }
 
     const submitHandler = (e) => {
         e.preventDefault()
-        setDisbale(true)
+       setData([...data, {name, phone_no:phoneNo, isEdit:false}])
+       resetHandler()
+    }
+
+    const resetHandler = () => {
+        setName("")
+        setPhoneNo("")
     }
 
     const displayFormHandler = () => {
-        setDisplayForm(true)
+        displayForm ? setDisplayForm(false) : setDisplayForm(true)
     }
 
     return (
@@ -43,7 +44,8 @@ export default function Form() {
                             id="name-input"
                             type="name"
                             placeholder="john Thomas"
-                            onChange={(e) => setName(e.target.value)} disabled={disable}
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
                             required
                         />
                         <div class="email-err-msg err-msg"></div>
@@ -60,14 +62,15 @@ export default function Form() {
                             id="phoneNo-input"
                             type="number"
                             placeholder="Phone No"
-                            onChange={(e) => setPhoneNo(e.target.value)} disabled={disable}
+                            onChange={(e) => setPhoneNo(e.target.value)} 
+                            value={phoneNo}
                             required
                         />
                         <div class="phoneNo-err-msg err-msg"></div>
                     </div>
                 </div>
 
-                <FormCantroller />
+                <FormCantroller value={setDisplayForm} submitHandler={submitHandler} resetHandler={resetHandler} setData={setData}/>
 
                 {/* <input type="submit" />
 

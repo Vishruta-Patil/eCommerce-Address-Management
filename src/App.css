@@ -74,6 +74,7 @@
 .add-btn {
   padding: 0.8rem 1.5rem;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .flex-center {
