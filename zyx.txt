@@ -1,0 +1,5 @@
+//    setData(dataList.filter(phno => (phno === item?.phone_no) ? [...dataList, {name,phone_no:phoneNo}]: dataList))
+    // setData(data.filter(phno => (phno === item?.phone_no) ? console.log("hello") : console.log("hi")))
+    // setData(data.map(address => phone_no === address.phone_no ? {...address, isEdit: !address.isEdit} : address))
+
+    // setData(data.map(address => address.phone_no === phoneNo ?  [...address, {name,phone_no:phoneNo,isEdit: false}] : address))

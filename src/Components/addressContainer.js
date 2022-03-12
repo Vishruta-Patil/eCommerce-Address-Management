@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import Form from "./Form"
 import FormEdit from "./FormEdit"
 
-const FormCantroller = ({ data, setData, editFormVisibility, setEditFormVisibility }) => {
+const AddressContainer = ({ data, setData, editFormVisibility, setEditFormVisibility }) => {
     const editHandler = (phone_no) => {
         // setEditFormVisibility(true)
          
@@ -17,7 +17,7 @@ const FormCantroller = ({ data, setData, editFormVisibility, setEditFormVisibili
     }
 
     // useEffect(() => setData(data), [data])
-    console.log(data)
+    // console.log(data)
 
 
     return (
@@ -26,12 +26,12 @@ const FormCantroller = ({ data, setData, editFormVisibility, setEditFormVisibili
                 <div>
                     {data.map(item =>
                      
-                    {return item.isEdit ? <FormEdit item={item}/> :
+                    {return item.isEdit ? <FormEdit item={item} data={data} setData={setData}/> :
                    
                         <div className="box-container address-container">
                             <p className="left-txt lg-txt">Name: {item?.name}</p>
                             <h2 className="left-txt rg-txt">Phone no: {item?.phone_no}</h2>
-                            <h2 className="left-txt md-text">{item?.address}</h2>
+                            <h2 className="left-txt md-txt">{item?.address}</h2>
 
                             <div className="btn-container">
                                 <button className="btn success" onClick={()=>editHandler(item?.phone_no)}>Edit</button>
@@ -49,5 +49,5 @@ const FormCantroller = ({ data, setData, editFormVisibility, setEditFormVisibili
     )
 }
 
-export default FormCantroller
+export default AddressContainer
 

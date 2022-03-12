@@ -26,21 +26,21 @@ export default function Form({data, setData}) {
 
     return (
         <div>
-            <div class="box-container">
+            <div className="box-container">
                 <div onClick={displayFormHandler} class="flex flex-center address-bar">
                     <button className="floating-btn add-btn">+</button>
-                    <p className="rg-txt">Add new address</p>
+                    <h2 className="rg-txt ">ADD NEW ADDRESS</h2>
                 </div>
 
             </div>
             {displayForm && <form onSubmit={submitHandler} className="box-container form-container">
                 <div class="input-container">
-                    <label class="label" for="name-input">Enter Your Full Name
-                        <span class="required-input-astrik">*</span>
+                    <label className="label" for="name-input">Enter Your Full Name
+                        <span className="required-input-astrik">*</span>
                     </label>
-                    <div class="inner-input-container">
+                    <div className="inner-input-container">
                         <input
-                            class="input"
+                            className="input"
                             id="name-input"
                             type="name"
                             placeholder="john Thomas"
@@ -48,17 +48,17 @@ export default function Form({data, setData}) {
                             value={name}
                             required
                         />
-                        <div class="email-err-msg err-msg"></div>
+                        <div className="email-err-msg err-msg"></div>
                     </div>
                 </div>
 
-                <div class="input-container" >
-                    <label class="label" for="phoneNo-input">Enter Your phone No.
-                        <span class="required-input-astrik">*</span>
+                <div className="input-container" >
+                    <label className="label" for="phoneNo-input">Enter Your phone No.
+                        <span className="required-input-astrik">*</span>
                     </label>
-                    <div class="inner-input-container">
+                    <div className="inner-input-container">
                         <input
-                            class="input"
+                            className="input"
                             id="phoneNo-input"
                             type="number"
                             placeholder="Phone No"
@@ -66,7 +66,7 @@ export default function Form({data, setData}) {
                             value={phoneNo}
                             required
                         />
-                        <div class="phoneNo-err-msg err-msg"></div>
+                        <div className="phoneNo-err-msg err-msg"></div>
                     </div>
                 </div>
 

@@ -1,51 +1,70 @@
 import FormCantroller from "./formCantroller";
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
+import dataList from "../data";
 
-export default function FormEdit({item}) {
-    // {item?.phone_no}
-    // const [name, setName] = useState('')
-    // const [phoneNo, setPhoneNo] = useState('')
+export default function FormEdit({ item, data, setData }) {
+    const [name, setName] = useState(item?.name)
+    const [phoneNo, setPhoneNo] = useState(item?.phone_no)
+
+    const submitHandler = (phone_no) => {
+        // e.preventDefault()
+        console.log(phone_no)
+
+        setData(data.map(address => phone_no === address.phone_no ?  { ...address, name:name, isEdit: !address.isEdit } : 
+         address))
+    }
+
+    const resetHandler = () => {
+        setName("")
+        setPhoneNo("")
+    }
+
 
     return (
         <div>
-            <form className="box-container form-container">
-                <div class="input-container">
-                    <label class="label" for="name-input">Enter Your Full Name
-                        <span class="required-input-astrik">*</span>
+            <div className="box-container form-container">
+                <div className="input-container">
+                    <label className="label" for="name-input">Enter Your Full Name
+                        <span className="required-input-astrik">*</span>
                     </label>
-                    <div class="inner-input-container">
+                    <div className="inner-input-container">
                         <input
-                            class="input"
+                            className="input"
                             id="name-input"
                             type="name"
                             placeholder="john Thomas"
-                            // onChange={(e) => setName(e.target.value)}
-                            value={item?.name}
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
                             required
                         />
-                        <div class="email-err-msg err-msg"></div>
+                        <div className="email-err-msg err-msg"></div>
                     </div>
                 </div>
 
-                <div class="input-container" >
-                    <label class="label" for="phoneNo-input">Enter Your phone No.
-                        <span class="required-input-astrik">*</span>
+                <div className="input-container" >
+                    <label className="label" for="phoneNo-input">Enter Your phone No.
+                        <span className="required-input-astrik">*</span>
                     </label>
-                    <div class="inner-input-container">
+                    <div className="inner-input-container">
                         <input
-                            class="input"
+                            className="input"
                             id="phoneNo-input"
                             type="number"
                             placeholder="Phone No"
-                            // onChange={(e) => setPhoneNo(e.target.value)}
-                            value={item?.phone_no}
+                            onChange={(e) => setPhoneNo(e.target.value)}
+                            value={phoneNo}
                             required
                         />
-                        <div class="phoneNo-err-msg err-msg"></div>
+                        <div className="phoneNo-err-msg err-msg"></div>
                     </div>
                 </div>
-                <FormCantroller />
-            </form>
+                <div className="btn-container">
+                    <button className="btn outline-success" type="submit" onClick={(e) => submitHandler(item?.phone_no)}>Submit</button>
+                    <button className="btn outline-secondary" onClick={resetHandler}>Reset</button>
+                    <button className="btn outline-error" >Cancel</button>
+                </div>
+
+            </div>
 
 
         </div>
