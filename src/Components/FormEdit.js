@@ -3,10 +3,9 @@ import React, { useState } from "react"
 export default function FormEdit({ item, data, setData }) {
     const [name, setName] = useState(item?.name)
     const [phoneNo, setPhoneNo] = useState(item?.phone_no)
-    const [cancel, setCancel] = useState(false)
 
     const submitHandler = (id) => {
-        setData(data.map(address => id === address.id ?  { ...address, name:name, phone_no:phoneNo, isEdit: !address.isEdit } : 
+        setData(data.map(address => id === address.id ?  { ...address, name, phone_no:phoneNo, isEdit: !address.isEdit } : 
          address))
     }
 
@@ -15,8 +14,9 @@ export default function FormEdit({ item, data, setData }) {
         setPhoneNo("")
     }
 
-    const cancelHandler = () => {
-        cancel ? setCancel(false) : setCancel(true)
+    const cancelHandler = (id) => {
+        setData(data.map(address => id === address.id ?  { ...address, isEdit: !address.isEdit } : 
+            address))
     }
 
 
@@ -59,9 +59,9 @@ export default function FormEdit({ item, data, setData }) {
                     </div>
                 </div>
                 <div className="btn-container">
-                    <button className="btn outline-success" type="submit" onClick={(e) => submitHandler(item?.id)}>Submit</button>
+                    <button className="btn outline-success" type="submit" onClick={() => submitHandler(item?.id)}>Submit</button>
                     <button className="btn outline-secondary" onClick={resetHandler}>Reset</button>
-                    {/* <button className="btn outline-error" onClick={cancelHandler}>Cancel</button> */}
+                    <button className="btn outline-error" onClick={() => cancelHandler(item?.id)}>Cancel</button>
                 </div>
 
             </div>

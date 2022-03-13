@@ -7,7 +7,7 @@ const AddressContainer = ({ data, setData }) => {
     }
     
     const deleteHandler = (item) => {
-       setData( data.filter(i => i.phone_no !== item?.phone_no))
+       setData( data.filter(i => i.id !== item?.id))
     }
 
 

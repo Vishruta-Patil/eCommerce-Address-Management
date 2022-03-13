@@ -11,11 +11,8 @@ export default function Form({data, setData}) {
         e.preventDefault()
        setData([...data, {id:uuidv4(), name, phone_no:phoneNo, isEdit:false}])
        resetHandler()
-       setDisplayForm(false)   
-       console.log(data) 
+       setDisplayForm(false)    
     }
-
-    console.log(data)
 
     const resetHandler = () => {
         setName("")
