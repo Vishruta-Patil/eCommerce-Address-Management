@@ -1,8 +1,9 @@
 import FormEdit from "./FormEdit"
 
-const AddressContainer = ({ data, setData, editFormVisibility, setEditFormVisibility }) => {
-    const editHandler = (phone_no) => {
-        setData(data.map(address => phone_no === address.phone_no ? {...address, isEdit: !address.isEdit} : address))  
+const AddressContainer = ({ data, setData }) => {
+    const reverseData = [...data].reverse()
+    const editHandler = (id) => {
+        setData(data.map(address => id === address.id ? {...address, isEdit: !address.isEdit} : address))  
     }
     
     const deleteHandler = (item) => {
@@ -13,7 +14,7 @@ const AddressContainer = ({ data, setData, editFormVisibility, setEditFormVisibi
     return (
         <div>
                 <div>
-                    {data.map(item =>
+                    {reverseData.map(item =>
                     {return item.isEdit ? <FormEdit item={item} data={data} setData={setData}/> :
                         <div className="box-container address-container">
                             <p className="left-txt lg-txt">Name: {item?.name}</p>
@@ -21,7 +22,7 @@ const AddressContainer = ({ data, setData, editFormVisibility, setEditFormVisibi
                             <h2 className="left-txt md-txt">{item?.address}</h2>
 
                             <div className="btn-container">
-                                <button className="btn success" onClick={()=>editHandler(item?.phone_no)}>Edit</button>
+                                <button className="btn success" onClick={()=>editHandler(item?.id)}>Edit</button>
                                 <button className="btn error" onClick={() => deleteHandler(item)}>Delete</button>
                             </div>
                         </div>

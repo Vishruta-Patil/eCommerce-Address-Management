@@ -1,21 +1,21 @@
 import { useState } from "react"
 import FormCantroller from "./formCantroller"
-
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Form({data, setData}) {
     const [name, setName] = useState('')
     const [phoneNo, setPhoneNo] = useState('')
-
     const [displayForm , setDisplayForm] = useState(false)
-
 
     const submitHandler = (e) => {
         e.preventDefault()
-       setData([...data, {name, phone_no:phoneNo, isEdit:false}])
+       setData([...data, {id:uuidv4(), name, phone_no:phoneNo, isEdit:false}])
        resetHandler()
-       setDisplayForm(false)
-       
+       setDisplayForm(false)   
+       console.log(data) 
     }
+
+    console.log(data)
 
     const resetHandler = () => {
         setName("")
@@ -29,9 +29,9 @@ export default function Form({data, setData}) {
     return (
         <div>
             <div className="box-container">
-                <div onClick={displayFormHandler} class="flex flex-center address-bar">
+                <div onClick={displayFormHandler} class="flex address-bar">
                     <button className="floating-btn add-btn">+</button>
-                    <h2 className="rg-txt ">ADD NEW ADDRESS</h2>
+                    <p className="lg-txt ">ADD NEW ADDRESS</p>
                 </div>
 
             </div>
