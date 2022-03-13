@@ -1,33 +1,20 @@
-import data from "../data"
-import React, { useEffect, useState } from "react"
-import Form from "./Form"
 import FormEdit from "./FormEdit"
 
 const AddressContainer = ({ data, setData, editFormVisibility, setEditFormVisibility }) => {
     const editHandler = (phone_no) => {
-        // setEditFormVisibility(true)
-         
-        setData(data.map(address => phone_no === address.phone_no ? {...address, isEdit: !address.isEdit} : address))
-        
+        setData(data.map(address => phone_no === address.phone_no ? {...address, isEdit: !address.isEdit} : address))  
     }
     
-
     const deleteHandler = (item) => {
        setData( data.filter(i => i.phone_no !== item?.phone_no))
     }
 
-    // useEffect(() => setData(data), [data])
-    // console.log(data)
-
 
     return (
         <div>
-            {/* {editFormVisibility ? <FormEdit /> : */}
                 <div>
                     {data.map(item =>
-                     
                     {return item.isEdit ? <FormEdit item={item} data={data} setData={setData}/> :
-                   
                         <div className="box-container address-container">
                             <p className="left-txt lg-txt">Name: {item?.name}</p>
                             <h2 className="left-txt rg-txt">Phone no: {item?.phone_no}</h2>
@@ -41,9 +28,6 @@ const AddressContainer = ({ data, setData, editFormVisibility, setEditFormVisibi
                     }
                     )}
                 </div>
-            {/* }  */}
-
-
         </div>
 
     )

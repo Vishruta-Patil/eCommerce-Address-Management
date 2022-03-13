@@ -1,13 +1,11 @@
-import FormCantroller from "./formCantroller";
 import React, { useState } from "react"
-import dataList from "../data";
 
 export default function FormEdit({ item, data, setData }) {
     const [name, setName] = useState(item?.name)
     const [phoneNo, setPhoneNo] = useState(item?.phone_no)
+    const [cancel, setCancel] = useState(false)
 
     const submitHandler = (phone_no) => {
-        // e.preventDefault()
         console.log(phone_no)
 
         setData(data.map(address => phone_no === address.phone_no ?  { ...address, name:name, isEdit: !address.isEdit } : 
@@ -17,6 +15,10 @@ export default function FormEdit({ item, data, setData }) {
     const resetHandler = () => {
         setName("")
         setPhoneNo("")
+    }
+
+    const cancelHandler = () => {
+        cancel ? setCancel(false) : setCancel(true)
     }
 
 
@@ -61,7 +63,7 @@ export default function FormEdit({ item, data, setData }) {
                 <div className="btn-container">
                     <button className="btn outline-success" type="submit" onClick={(e) => submitHandler(item?.phone_no)}>Submit</button>
                     <button className="btn outline-secondary" onClick={resetHandler}>Reset</button>
-                    <button className="btn outline-error" >Cancel</button>
+                    {/* <button className="btn outline-error" onClick={cancelHandler}>Cancel</button> */}
                 </div>
 
             </div>

@@ -13,6 +13,8 @@ export default function Form({data, setData}) {
         e.preventDefault()
        setData([...data, {name, phone_no:phoneNo, isEdit:false}])
        resetHandler()
+       setDisplayForm(false)
+       
     }
 
     const resetHandler = () => {
@@ -71,11 +73,6 @@ export default function Form({data, setData}) {
                 </div>
 
                 <FormCantroller value={setDisplayForm} submitHandler={submitHandler} resetHandler={resetHandler} setData={setData}/>
-
-                {/* <input type="submit" />
-
-            <input type="button" value="edit" onClick={editHandler} /> */}
-
 
             </form> }
         </div>
